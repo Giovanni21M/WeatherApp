@@ -11,18 +11,19 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.giovannimartinus.weatherapp.MainActivity">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:srcCompat="@drawable/background"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/imageView" />
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/homeLayout">
+        android:id="@+id/homeLayout"
+        android:visibility="invisible">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/background"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/homeBackgroundView" />
 
         <TextView
             android:text="What's\nThe\nWeather?"
@@ -46,7 +47,7 @@
             android:ems="10"
             android:layout_below="@+id/titleTextView"
             android:layout_marginTop="80dp"
-            android:id="@+id/editText"
+            android:id="@+id/cityEditText"
             android:hint="Enter A City"
             android:textColor="@android:color/white"
             android:textSize="24sp"
@@ -64,6 +65,61 @@
         android:layout_height="match_parent"
         android:id="@+id/cityLayout">
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/background"
+            android:id="@+id/cityBackgroundView" />
+
+        <TextView
+            android:text="00\u00B0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/degreeTextView"
+            android:layout_marginTop="87dp"
+            android:textSize="50sp"
+            android:textColor="@android:color/white"
+            android:background="@android:drawable/screen_background_dark_transparent"
+            android:backgroundTint="#83a7b6"
+            android:padding="5dp"
+            android:textAlignment="center"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="55dp"
+            android:layout_marginStart="55dp" />
+
+        <TextView
+            android:text="SUNNY"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/weatherTextView"
+            android:layout_below="@+id/degreeTextView"
+            android:layout_alignLeft="@+id/degreeTextView"
+            android:layout_alignStart="@+id/degreeTextView"
+            android:layout_alignRight="@+id/degreeTextView"
+            android:layout_alignEnd="@+id/degreeTextView"
+            android:textColor="@android:color/white"
+            android:background="@android:drawable/screen_background_dark_transparent"
+            android:backgroundTint="#83a7b6"
+            android:padding="5dp"
+            android:textAlignment="center"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/dayicon"
+            android:layout_marginRight="45dp"
+            android:layout_marginEnd="45dp"
+            android:id="@+id/dayIcon"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:background="@android:drawable/screen_background_dark_transparent"
+            android:backgroundTint="#83a7b6"
+            android:layout_alignTop="@+id/degreeTextView"
+            android:padding="5dp"
+            android:layout_alignBottom="@+id/weatherTextView" />
     </RelativeLayout>
 
 </RelativeLayout>
