@@ -1,4 +1,4 @@
-#Weather App
+# Weather App
 
 Stay up to date with the weather in your city of choice.
 
