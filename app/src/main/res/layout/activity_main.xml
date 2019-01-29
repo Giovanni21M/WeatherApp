@@ -58,6 +58,19 @@
             android:layout_alignEnd="@+id/titleTextView"
             android:layout_alignLeft="@+id/titleTextView"
             android:layout_alignStart="@+id/titleTextView" />
+
+        <Button
+            android:text="Search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/searchButton"
+            android:layout_below="@+id/cityEditText"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="23dp"
+            android:background="@android:drawable/screen_background_light_transparent"
+            android:backgroundTint="@android:color/holo_blue_bright"
+            android:minWidth="80dip"
+            android:minHeight="36dp" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -118,49 +131,6 @@
                 android:textSize="16sp" />
         </LinearLayout>
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@android:drawable/screen_background_dark_transparent"
-            android:backgroundTint="#83a7b6"
-            android:padding="10dp"
-            android:layout_marginLeft="24dp"
-            android:layout_marginStart="24dp"
-            android:id="@+id/dwcLinearLayout"
-            android:layout_marginTop="78dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
-
-            <TextView
-                android:text="00\u00B0"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/degreeTextView"
-                android:textSize="64sp"
-                android:textColor="@android:color/white"
-                android:textAlignment="center" />
-
-            <TextView
-                android:text="sunny"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/weatherTextView"
-                android:textAlignment="center"
-                android:textColor="@android:color/white"
-                android:textSize="24sp" />
-
-            <TextView
-                android:text="Miami"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/cityTextView"
-                android:textAlignment="center"
-                android:textColor="@android:color/white"
-                android:textAllCaps="true" />
-        </LinearLayout>
-
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -202,7 +172,7 @@
                 android:maxWidth="80dp" />
 
             <TextView
-                android:text="1025hpa"
+                android:text="3025hpa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
@@ -270,6 +240,64 @@
                 android:backgroundTint="@android:color/holo_blue_dark"
                 android:textSize="16sp" />
         </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/screen_background_dark_transparent"
+            android:backgroundTint="#83a7b6"
+            android:padding="10dp"
+            android:layout_marginLeft="33dp"
+            android:layout_marginStart="33dp"
+            android:id="@+id/dwcLinearLayout"
+            android:layout_marginTop="78dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+
+            <TextView
+                android:text="00\u00B0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/degreeTextView"
+                android:textSize="64sp"
+                android:textColor="@android:color/white"
+                android:textAlignment="center" />
+
+            <TextView
+                android:text="sunny"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/weatherTextView"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="24sp" />
+
+            <TextView
+                android:text="Miami"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/cityTextView"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textAllCaps="true" />
+        </LinearLayout>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/returnicon"
+            android:id="@+id/returnButton"
+            android:background="@android:drawable/screen_background_light_transparent"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:padding="10dp"
+            android:maxHeight="50dp"
+            android:maxWidth="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
     </RelativeLayout>
 
