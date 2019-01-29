@@ -115,6 +115,46 @@
                 android:textAllCaps="true" />
         </LinearLayout>
 
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/screen_background_dark_transparent"
+            android:backgroundTint="#83a7b6"
+            android:layout_marginTop="68dp"
+            android:layout_below="@+id/dwcLinearLayout"
+            android:layout_alignLeft="@+id/dwcLinearLayout"
+            android:layout_alignStart="@+id/dwcLinearLayout"
+            android:id="@+id/humidityLinearLayout">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                app:srcCompat="@drawable/humidityicon"
+                android:id="@+id/humidityIcon" />
+
+            <TextView
+                android:text="75%"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:id="@+id/percentageTextView"
+                android:textAlignment="center"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:text="Humidity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/humidityTextView"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:background="@android:drawable/screen_background_light_transparent"
+                android:padding="5dp"
+                android:backgroundTint="@android:color/holo_blue_dark" />
+        </LinearLayout>
+
     </RelativeLayout>
 
 </RelativeLayout>
