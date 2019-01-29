@@ -78,11 +78,57 @@
             android:layout_height="wrap_content"
             android:background="@android:drawable/screen_background_dark_transparent"
             android:backgroundTint="#83a7b6"
-            android:padding="5dp"
-            android:layout_marginLeft="42dp"
-            android:layout_marginStart="42dp"
+            android:layout_marginTop="68dp"
+            android:layout_below="@+id/dwcLinearLayout"
+            android:layout_alignLeft="@+id/dwcLinearLayout"
+            android:layout_alignStart="@+id/dwcLinearLayout"
+            android:id="@+id/humidityLinearLayout">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                app:srcCompat="@drawable/humidityicon"
+                android:id="@+id/humidityIcon"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:maxHeight="100dp"
+                android:maxWidth="80dp" />
+
+            <TextView
+                android:text="75%"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:id="@+id/percentageTextView"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+
+            <TextView
+                android:text="Humidity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/humidityTextView"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:background="@android:drawable/screen_background_light_transparent"
+                android:padding="10dp"
+                android:backgroundTint="@android:color/holo_blue_dark"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/screen_background_dark_transparent"
+            android:backgroundTint="#83a7b6"
+            android:padding="10dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp"
             android:id="@+id/dwcLinearLayout"
-            android:layout_marginTop="57dp"
+            android:layout_marginTop="78dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true">
@@ -115,44 +161,114 @@
                 android:textAllCaps="true" />
         </LinearLayout>
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/dayicon"
+            android:background="@android:drawable/screen_background_dark_transparent"
+            android:backgroundTint="#83a7b6"
+            android:id="@+id/dayTimeIcon"
+            android:layout_alignTop="@+id/dwcLinearLayout"
+            android:layout_alignRight="@+id/airLinearLayout"
+            android:layout_alignEnd="@+id/airLinearLayout"
+            android:padding="10dp"
+            android:layout_alignBottom="@+id/dwcLinearLayout"
+            android:layout_toRightOf="@+id/dwcLinearLayout"
+            android:layout_toEndOf="@+id/dwcLinearLayout" />
+
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:drawable/screen_background_dark_transparent"
             android:backgroundTint="#83a7b6"
-            android:layout_marginTop="68dp"
-            android:layout_below="@+id/dwcLinearLayout"
-            android:layout_alignLeft="@+id/dwcLinearLayout"
-            android:layout_alignStart="@+id/dwcLinearLayout"
-            android:id="@+id/humidityLinearLayout">
+            android:id="@+id/airLinearLayout"
+            android:layout_marginLeft="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_alignTop="@+id/windLinearLayout"
+            android:layout_toRightOf="@+id/windLinearLayout"
+            android:layout_toEndOf="@+id/windLinearLayout"
+            android:layout_alignBottom="@+id/windLinearLayout">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
-                app:srcCompat="@drawable/humidityicon"
-                android:id="@+id/humidityIcon" />
+                android:padding="10dp"
+                app:srcCompat="@drawable/airpressureicon"
+                android:id="@+id/airPressureIcon"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:maxHeight="100dp"
+                android:maxWidth="80dp" />
 
             <TextView
-                android:text="75%"
+                android:text="1025hpa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:id="@+id/percentageTextView"
+                android:padding="10dp"
+                android:id="@+id/pressureTextView"
                 android:textAlignment="center"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
 
             <TextView
-                android:text="Humidity"
+                android:text="Pressure"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/humidityTextView"
+                android:id="@+id/airTextView"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
                 android:background="@android:drawable/screen_background_light_transparent"
-                android:padding="5dp"
-                android:backgroundTint="@android:color/holo_blue_dark" />
+                android:padding="10dp"
+                android:backgroundTint="@android:color/holo_blue_dark"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/screen_background_dark_transparent"
+            android:backgroundTint="#83a7b6"
+            android:id="@+id/windLinearLayout"
+            android:layout_marginLeft="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_alignBottom="@+id/humidityLinearLayout"
+            android:layout_toRightOf="@+id/humidityLinearLayout"
+            android:layout_toEndOf="@+id/humidityLinearLayout">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                app:srcCompat="@drawable/windspeedicon"
+                android:id="@+id/windyIcon"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:maxHeight="100dp"
+                android:maxWidth="80dp" />
+
+            <TextView
+                android:text="1.6km/h"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:id="@+id/windSpeedTextView"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+
+            <TextView
+                android:text="Wind"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/windTextView"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:background="@android:drawable/screen_background_light_transparent"
+                android:padding="10dp"
+                android:backgroundTint="@android:color/holo_blue_dark"
+                android:textSize="16sp" />
         </LinearLayout>
 
     </RelativeLayout>
