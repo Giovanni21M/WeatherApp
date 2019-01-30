@@ -3,6 +3,8 @@ package com.giovannimartinus.weatherapp;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,6 +14,16 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
+
+    ImageView dayTimeIcon;
+    ImageView homeBackgroundView;
+    ImageView weatherBackgroundView;
+    TextView cityTextView;
+    TextView degreeTextView;
+    TextView percentageTextView;
+    TextView pressureTextView;
+    TextView weatherTextView;
+    TextView windSpeedTextView;
 
     public class DownloadTask extends AsyncTask<String, Void, String> {
         @Override
@@ -46,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
+            return null;
         }
     }
 
@@ -53,5 +67,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        dayTimeIcon = (ImageView) findViewById(R.id.dayTimeIcon);
+        homeBackgroundView = (ImageView) findViewById(R.id.homeBackgroundView);
+        weatherBackgroundView = (ImageView) findViewById(R.id.weatherBackgroundView);
+        cityTextView = (TextView) findViewById(R.id.cityTextView);
+        degreeTextView = (TextView) findViewById(R.id.degreeTextView);
+        percentageTextView = (TextView) findViewById(R.id.percentageTextView);
+        pressureTextView = (TextView) findViewById(R.id.pressureTextView);
+        weatherTextView = (TextView) findViewById(R.id.weatherTextView);
+        windSpeedTextView = (TextView) findViewById(R.id.windSpeedTextView);
     }
 }
