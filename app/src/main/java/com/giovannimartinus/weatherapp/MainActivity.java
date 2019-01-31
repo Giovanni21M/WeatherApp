@@ -7,6 +7,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -61,6 +65,28 @@ public class MainActivity extends AppCompatActivity {
             }
 
             return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+
+            try {
+
+                // convert get string of web content to JSON object
+                JSONObject jsonObject = new JSONObject(result);
+                String weatherInfo = jsonObject.getString("weather");
+                String temperatureInfo = jsonObject.getString("main");
+                String windInfo = jsonObject.getString("wind");
+
+                // pass strings of JSON objects to a JSON array
+                JSONArray jsonWeatherArray = new JSONArray(weatherInfo);
+                JSONArray jsonTempuratureArray = new JSONArray(temperatureInfo);
+                JSONArray jsonWindArray = new JSONArray(windInfo);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
     }
 
