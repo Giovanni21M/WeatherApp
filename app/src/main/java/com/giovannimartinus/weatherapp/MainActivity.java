@@ -3,6 +3,7 @@ package com.giovannimartinus.weatherapp;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -81,8 +82,25 @@ public class MainActivity extends AppCompatActivity {
 
                 // pass strings of JSON objects to a JSON array
                 JSONArray jsonWeatherArray = new JSONArray(weatherInfo);
-                JSONArray jsonTempuratureArray = new JSONArray(temperatureInfo);
+                JSONArray jsonTemperatureArray = new JSONArray(temperatureInfo);
                 JSONArray jsonWindArray = new JSONArray(windInfo);
+
+                // get parts (values) of json arrays
+                for (int i = 0;
+                        i < jsonWeatherArray.length() &&
+                        i < jsonTemperatureArray.length() &&
+                        i < jsonWindArray.length(); i++) {
+                    JSONObject jsonWeatherPart = jsonWeatherArray.getJSONObject(i);
+                    JSONObject jsonTemperaturePart = jsonTemperatureArray.getJSONObject(i);
+                    JSONObject jsonWindPart = jsonWindArray.getJSONObject(i);
+
+                    // log to test and ensure correct values are retrieved
+                    Log.i("Weather", jsonWeatherPart.getString("main"));
+                    Log.i("Temperature", jsonTemperaturePart.getString("temp"));
+                    Log.i("Humidity", jsonTemperaturePart.getString("humidity"));
+                    Log.i("Air Pressure", jsonTemperaturePart.getString("pressure"));
+                    Log.i("Wind Speed", jsonWindPart.getString("speed"));
+                }
 
             } catch (JSONException e) {
                 e.printStackTrace();
