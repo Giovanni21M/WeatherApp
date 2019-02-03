@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -30,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
     TextView pressureTextView;
     TextView weatherTextView;
     TextView windSpeedTextView;
+    RelativeLayout homeLayout;
+    RelativeLayout weatherLayout;
 
     public class DownloadTask extends AsyncTask<String, Void, String> {
         @Override
@@ -126,5 +129,7 @@ public class MainActivity extends AppCompatActivity {
         pressureTextView = (TextView) findViewById(R.id.pressureTextView);
         weatherTextView = (TextView) findViewById(R.id.weatherTextView);
         windSpeedTextView = (TextView) findViewById(R.id.windSpeedTextView);
+        homeLayout = (RelativeLayout) findViewById(R.id.homeLayout);
+        weatherLayout = (RelativeLayout) findViewById(R.id.weatherLayout);
     }
 }
