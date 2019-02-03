@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -33,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
     TextView windSpeedTextView;
     RelativeLayout homeLayout;
     RelativeLayout weatherLayout;
+
+    final DownloadTask downloadTask = new DownloadTask();
 
     public class DownloadTask extends AsyncTask<String, Void, String> {
         @Override
@@ -83,7 +86,11 @@ public class MainActivity extends AppCompatActivity {
                 String temperatureInfo = jsonObject.getString("main");
                 String windInfo = jsonObject.getString("wind");
 
-                // pass strings of JSON objects to a JSON array
+                Log.i("Weather Info", weatherInfo);
+                Log.i("Temperature Info", temperatureInfo);
+                Log.i("Wind Info", windInfo);
+
+                /* pass strings of JSON objects to a JSON array
                 JSONArray jsonWeatherArray = new JSONArray(weatherInfo);
                 JSONArray jsonTemperatureArray = new JSONArray(temperatureInfo);
                 JSONArray jsonWindArray = new JSONArray(windInfo);
@@ -103,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
                     Log.i("Humidity", jsonTemperaturePart.getString("humidity"));
                     Log.i("Air Pressure", jsonTemperaturePart.getString("pressure"));
                     Log.i("Wind Speed", jsonWindPart.getString("speed"));
-                }
+                }*/
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -111,9 +118,21 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void returnButton(View view) {}
+    public void returnButton(View view) {
+        weatherLayout.setVisibility(View.GONE);
+        homeLayout.setVisibility(View.VISIBLE);
+    }
 
-    public void searchButton(View view) {}
+    public void searchButton(View view) {
+        EditText cityEditText = (EditText) findViewById(R.id.cityEditText);
+
+        try {
+            downloadTask.execute("https://api.openweathermap.org/data/2.5/weather?q=" +
+                    cityEditText.getText() + "&appid=d459a5bba54428ba7c66c626f2e5495f");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
