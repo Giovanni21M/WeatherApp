@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     RelativeLayout weatherLayout;
 
     final DownloadTask downloadTask = new DownloadTask();
+    final WeatherConditions weatherConditions = new WeatherConditions();
 
     private class WeatherConditions {
         private int temperature;
@@ -129,33 +130,40 @@ public class MainActivity extends AppCompatActivity {
 
             try {
 
-                // convert get string of web content to JSON object
+                // get and convert string of web content to JSON object
                 JSONObject jsonObject = new JSONObject(result);
 
-                // get string of weather
-                String weatherInfo = jsonObject.getString("weather");
-                Log.i("Weather Info", weatherInfo);
+                // get list of temperature, air pressure, and humidity
+                JSONObject conditionsInfo = jsonObject.getJSONObject("main");
 
-                // get string of temperature, air pressure, and humidity
-                JSONObject temperatureInfo = jsonObject.getJSONObject("main");
-                String tempInfo = temperatureInfo.getString("temp");
-                String pressureInfo = temperatureInfo.getString("pressure");
-                String humidityInfo = temperatureInfo.getString("humidity");
-                Log.i("Temperature (Kelvin)", tempInfo);
-                Log.i("Barometric Pressure", pressureInfo);
-                Log.i("Humidity Percentage", humidityInfo);
+                // set temperature in WeatherConditions()
+                String temperature = conditionsInfo.getString("temp");
+                int temperatureInfo = Integer.parseInt(temperature);
+                weatherConditions.setTemperature(temperatureInfo);
 
-                // get string of wind speed
+                // set air pressure in WeatherConditions()
+                String airPressure = conditionsInfo.getString("pressure");
+                int pressureInfo = Integer.parseInt(airPressure);
+                weatherConditions.setPressure(pressureInfo);
+
+                // set humidity in WeatherConditions()
+                String humidity = conditionsInfo.getString("humidity");
+                int humidityInfo = Integer.parseInt(humidity);
+                weatherConditions.setPressure(humidityInfo);
+
+                // get string of wind speed from JSONobject and set in WeatherConditions()
                 JSONObject windSpeedInfo = jsonObject.getJSONObject("wind");
-                String windInfo = windSpeedInfo.getString("speed");
-                Log.i("Wind Speed (Knots)", windInfo);
+                String windSpeed = windSpeedInfo.getString("speed");
+                int windInfo = Integer.parseInt(windSpeed);
+                weatherConditions.setPressure(windInfo);
 
-                // pass strings of JSON objects to a JSON array
+
+                // get string of weather pass strings of JSON objects to a JSON array
+                String weatherInfo = jsonObject.getString("weather");
                 JSONArray jsonWeatherArray = new JSONArray(weatherInfo);
 
                 // get parts (values) of json arrays
-                for (int i = 0;
-                        i < jsonWeatherArray.length(); i++) {
+                for (int i = 0; i < jsonWeatherArray.length(); i++) {
                     JSONObject jsonWeatherPart = jsonWeatherArray.getJSONObject(i);
 
                     // log to test and ensure correct values are retrieved
