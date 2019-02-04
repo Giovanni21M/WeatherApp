@@ -37,6 +37,34 @@ public class MainActivity extends AppCompatActivity {
 
     final DownloadTask downloadTask = new DownloadTask();
 
+    private class WeatherConditions {
+        private int temperature;
+        private int pressure;
+        private int humidity;
+        private int wind;
+        private String weather;
+
+        public int getTemperature() {
+            return temperature;
+        }
+
+        public int getPressure() {
+            return pressure;
+        }
+
+        public int getHumidity() {
+            return humidity;
+        }
+
+        public int getWind() {
+            return wind;
+        }
+
+        public String getWeather() {
+            return weather;
+        }
+    }
+
     public class DownloadTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... urls) {
