@@ -162,12 +162,11 @@ public class MainActivity extends AppCompatActivity {
                 String weatherInfo = jsonObject.getString("weather");
                 JSONArray jsonWeatherArray = new JSONArray(weatherInfo);
 
-                // get parts (values) of json arrays
+                // get parts (values) of json arrays and set in WeatherConditions()
                 for (int i = 0; i < jsonWeatherArray.length(); i++) {
                     JSONObject jsonWeatherPart = jsonWeatherArray.getJSONObject(i);
+                    weatherConditions.setWeather(jsonWeatherPart.getString("main"));
 
-                    // log to test and ensure correct values are retrieved
-                    Log.i("Weather", jsonWeatherPart.getString("main"));
                 }
 
             } catch (JSONException e) {
