@@ -83,34 +83,32 @@ public class MainActivity extends AppCompatActivity {
                 // convert get string of web content to JSON object
                 JSONObject jsonObject = new JSONObject(result);
                 String weatherInfo = jsonObject.getString("weather");
-                String temperatureInfo = jsonObject.getString("main");
-                String windInfo = jsonObject.getString("wind");
 
                 Log.i("Weather Info", weatherInfo);
-                Log.i("Temperature Info", temperatureInfo);
-                Log.i("Wind Info", windInfo);
 
-                /* pass strings of JSON objects to a JSON array
+                JSONObject temperatureInfo = jsonObject.getJSONObject("main");
+                String tempInfo = temperatureInfo.getString("temp");
+                String pressureInfo = temperatureInfo.getString("pressure");
+                String humidityInfo = temperatureInfo.getString("humidity");
+                Log.i("Temperature (Kelvin)", tempInfo);
+                Log.i("Barometric Pressure", pressureInfo);
+                Log.i("Humidity Percentage", humidityInfo);
+
+                JSONObject windSpeedInfo = jsonObject.getJSONObject("wind");
+                String windInfo = windSpeedInfo.getString("speed");
+                Log.i("Wind Speed (Knots)", windInfo);
+
+                // pass strings of JSON objects to a JSON array
                 JSONArray jsonWeatherArray = new JSONArray(weatherInfo);
-                JSONArray jsonTemperatureArray = new JSONArray(temperatureInfo);
-                JSONArray jsonWindArray = new JSONArray(windInfo);
 
                 // get parts (values) of json arrays
                 for (int i = 0;
-                        i < jsonWeatherArray.length() &&
-                        i < jsonTemperatureArray.length() &&
-                        i < jsonWindArray.length(); i++) {
+                        i < jsonWeatherArray.length(); i++) {
                     JSONObject jsonWeatherPart = jsonWeatherArray.getJSONObject(i);
-                    JSONObject jsonTemperaturePart = jsonTemperatureArray.getJSONObject(i);
-                    JSONObject jsonWindPart = jsonWindArray.getJSONObject(i);
 
                     // log to test and ensure correct values are retrieved
                     Log.i("Weather", jsonWeatherPart.getString("main"));
-                    Log.i("Temperature", jsonTemperaturePart.getString("temp"));
-                    Log.i("Humidity", jsonTemperaturePart.getString("humidity"));
-                    Log.i("Air Pressure", jsonTemperaturePart.getString("pressure"));
-                    Log.i("Wind Speed", jsonWindPart.getString("speed"));
-                }*/
+                }
 
             } catch (JSONException e) {
                 e.printStackTrace();
