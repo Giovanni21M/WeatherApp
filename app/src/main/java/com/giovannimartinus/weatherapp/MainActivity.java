@@ -63,6 +63,27 @@ public class MainActivity extends AppCompatActivity {
         public String getWeather() {
             return weather;
         }
+
+        public void setTemperature(int temperature) {
+            // need to convert from Kelvin
+            this.temperature = temperature;
+        }
+
+        public void setPressure(int pressure) {
+            this.pressure = pressure;
+        }
+
+        public void setHumidity(int humidity) {
+            this.humidity = humidity;
+        }
+
+        public void setWind(int wind) {
+            this.wind = wind;
+        }
+
+        public void setWeather(String weather) {
+            this.weather = weather;
+        }
     }
 
     public class DownloadTask extends AsyncTask<String, Void, String> {
