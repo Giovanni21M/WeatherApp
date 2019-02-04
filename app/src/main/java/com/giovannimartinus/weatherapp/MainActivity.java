@@ -65,8 +65,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         public void setTemperature(int temperature) {
-            // need to convert from Kelvin
-            this.temperature = temperature;
+            // need to convert from Kelvin to Celsius
+            this.temperature = temperature - 273;
         }
 
         public void setPressure(int pressure) {
