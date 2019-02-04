@@ -82,10 +82,12 @@ public class MainActivity extends AppCompatActivity {
 
                 // convert get string of web content to JSON object
                 JSONObject jsonObject = new JSONObject(result);
-                String weatherInfo = jsonObject.getString("weather");
 
+                // get string of weather
+                String weatherInfo = jsonObject.getString("weather");
                 Log.i("Weather Info", weatherInfo);
 
+                // get string of temperature, air pressure, and humidity
                 JSONObject temperatureInfo = jsonObject.getJSONObject("main");
                 String tempInfo = temperatureInfo.getString("temp");
                 String pressureInfo = temperatureInfo.getString("pressure");
@@ -94,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("Barometric Pressure", pressureInfo);
                 Log.i("Humidity Percentage", humidityInfo);
 
+                // get string of wind speed
                 JSONObject windSpeedInfo = jsonObject.getJSONObject("wind");
                 String windInfo = windSpeedInfo.getString("speed");
                 Log.i("Wind Speed (Knots)", windInfo);
