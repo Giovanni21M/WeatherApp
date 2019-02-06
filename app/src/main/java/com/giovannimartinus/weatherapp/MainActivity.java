@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
     RelativeLayout homeLayout;
     RelativeLayout weatherLayout;
 
-    final DownloadTask downloadTask = new DownloadTask();
     final WeatherConditions weatherConditions = new WeatherConditions();
     final WeatherTemplate weatherTemplate = new WeatherTemplate();
 
@@ -93,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
             weatherLayout.setVisibility(View.VISIBLE);
             homeLayout.setVisibility(View.GONE);
             EditText cityEditText = (EditText) findViewById(R.id.cityEditText);
+            final DownloadTask downloadTask = new DownloadTask();
 
             try {
                 downloadTask.execute("https://api.openweathermap.org/data/2.5/weather?q=" +
