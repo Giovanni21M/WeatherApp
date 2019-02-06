@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         private void searchFunction() {
             weatherLayout.setVisibility(View.VISIBLE);
             homeLayout.setVisibility(View.GONE);
-            EditText cityEditText = (EditText) findViewById(R.id.cityEditText);
+            final EditText cityEditText = (EditText) findViewById(R.id.cityEditText);
             final DownloadTask downloadTask = new DownloadTask();
 
             try {
@@ -100,6 +100,19 @@ public class MainActivity extends AppCompatActivity {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+
+            layoutSettings(cityEditText.getText().toString());
+        }
+
+        private void layoutSettings(String string) {
+            cityTextView.setText(string);
+            /*
+            degreeTextView.setText(weatherConditions.getTemperature());
+            percentageTextView.setText(weatherConditions.getHumidity());
+            pressureTextView.setText(weatherConditions.getPressure());
+            weatherTextView.setText(weatherConditions.getWeather());
+            windSpeedTextView.setText(weatherConditions.getWind());
+             */
         }
     }
 
@@ -168,14 +181,14 @@ public class MainActivity extends AppCompatActivity {
                 String humidity = conditionsInfo.getString("humidity");
                 Double humidityDouble = Double.parseDouble(humidity);
                 int humidityInfo = humidityDouble.intValue();
-                weatherConditions.setPressure(humidityInfo);
+                weatherConditions.setHumidity(humidityInfo);
 
                 // get string of wind speed from JSONobject and set in WeatherConditions()
                 JSONObject windSpeedInfo = jsonObject.getJSONObject("wind");
                 String windSpeed = windSpeedInfo.getString("speed");
                 Double windDouble = Double.parseDouble(windSpeed);
                 int windInfo = windDouble.intValue();
-                weatherConditions.setPressure(windInfo);
+                weatherConditions.setWind(windInfo);
 
 
                 // get string of weather pass strings of JSON objects to a JSON array
