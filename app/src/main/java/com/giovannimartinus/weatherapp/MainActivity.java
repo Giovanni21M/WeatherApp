@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
     final DownloadTask downloadTask = new DownloadTask();
     final WeatherConditions weatherConditions = new WeatherConditions();
+    final WeatherTemplate weatherTemplate = new WeatherTemplate();
 
     private class WeatherConditions {
         private int temperature;
@@ -84,6 +85,21 @@ public class MainActivity extends AppCompatActivity {
 
         public void setWeather(String weather) {
             this.weather = weather;
+        }
+    }
+
+    private class WeatherTemplate {
+        private void searchFunction() {
+            weatherLayout.setVisibility(View.VISIBLE);
+            homeLayout.setVisibility(View.GONE);
+            EditText cityEditText = (EditText) findViewById(R.id.cityEditText);
+
+            try {
+                downloadTask.execute("https://api.openweathermap.org/data/2.5/weather?q=" +
+                        cityEditText.getText() + "&appid=d459a5bba54428ba7c66c626f2e5495f");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -185,14 +201,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void searchButton(View view) {
-        EditText cityEditText = (EditText) findViewById(R.id.cityEditText);
-
-        try {
-            downloadTask.execute("https://api.openweathermap.org/data/2.5/weather?q=" +
-                    cityEditText.getText() + "&appid=d459a5bba54428ba7c66c626f2e5495f");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        weatherTemplate.searchFunction();
     }
 
     @Override
