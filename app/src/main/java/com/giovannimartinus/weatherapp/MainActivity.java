@@ -138,23 +138,27 @@ public class MainActivity extends AppCompatActivity {
 
                 // set temperature in WeatherConditions()
                 String temperature = conditionsInfo.getString("temp");
-                int temperatureInfo = Integer.parseInt(temperature);
+                Double temperatureDouble = Double.parseDouble(temperature);
+                int temperatureInfo = temperatureDouble.intValue();
                 weatherConditions.setTemperature(temperatureInfo);
 
                 // set air pressure in WeatherConditions()
                 String airPressure = conditionsInfo.getString("pressure");
-                int pressureInfo = Integer.parseInt(airPressure);
+                Double pressureDouble = Double.parseDouble(airPressure);
+                int pressureInfo = pressureDouble.intValue();
                 weatherConditions.setPressure(pressureInfo);
 
                 // set humidity in WeatherConditions()
                 String humidity = conditionsInfo.getString("humidity");
-                int humidityInfo = Integer.parseInt(humidity);
+                Double humidityDouble = Double.parseDouble(humidity);
+                int humidityInfo = humidityDouble.intValue();
                 weatherConditions.setPressure(humidityInfo);
 
                 // get string of wind speed from JSONobject and set in WeatherConditions()
                 JSONObject windSpeedInfo = jsonObject.getJSONObject("wind");
                 String windSpeed = windSpeedInfo.getString("speed");
-                int windInfo = Integer.parseInt(windSpeed);
+                Double windDouble = Double.parseDouble(windSpeed);
+                int windInfo = windDouble.intValue();
                 weatherConditions.setPressure(windInfo);
 
 
