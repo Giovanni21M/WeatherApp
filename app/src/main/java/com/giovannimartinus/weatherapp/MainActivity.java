@@ -106,13 +106,6 @@ public class MainActivity extends AppCompatActivity {
 
         private void layoutSettings(String string) {
             cityTextView.setText(string);
-            /*
-            degreeTextView.setText(weatherConditions.getTemperature());
-            percentageTextView.setText(weatherConditions.getHumidity());
-            pressureTextView.setText(weatherConditions.getPressure());
-            weatherTextView.setText(weatherConditions.getWeather());
-            windSpeedTextView.setText(weatherConditions.getWind());
-             */
         }
     }
 
