@@ -39,25 +39,25 @@ public class MainActivity extends AppCompatActivity {
     final WeatherTemplate weatherTemplate = new WeatherTemplate();
 
     private class WeatherConditions {
-        private int temperature;
-        private int pressure;
-        private int humidity;
-        private int wind;
+        private String temperature;
+        private String pressure;
+        private String humidity;
+        private String wind;
         private String weather;
 
-        public int getTemperature() {
+        public String getTemperature() {
             return temperature;
         }
 
-        public int getPressure() {
+        public String getPressure() {
             return pressure;
         }
 
-        public int getHumidity() {
+        public String getHumidity() {
             return humidity;
         }
 
-        public int getWind() {
+        public String getWind() {
             return wind;
         }
 
@@ -67,23 +67,23 @@ public class MainActivity extends AppCompatActivity {
 
         public void setTemperature(int temperature) {
             // need to convert from Kelvin to Celsius
-            this.temperature = temperature - 273;
+            this.temperature = String.valueOf(temperature - 273);
         }
 
         public void setPressure(int pressure) {
-            this.pressure = pressure;
+            this.pressure = String.valueOf(pressure);
         }
 
         public void setHumidity(int humidity) {
-            this.humidity = humidity;
+            this.humidity = String.valueOf(humidity);
         }
 
         public void setWind(int wind) {
-            this.wind = wind;
+            this.wind = String.valueOf(wind);
         }
 
         public void setWeather(String weather) {
-            this.weather = weather;
+            this.weather = String.valueOf(weather);
         }
     }
 
@@ -105,11 +105,11 @@ public class MainActivity extends AppCompatActivity {
         private void layoutSettings() {
             final EditText cityEditText = (EditText) findViewById(R.id.cityEditText);
             cityTextView.setText(cityEditText.getText().toString());
-            //degreeTextView.setText(weatherConditions.getTemperature());
-            //percentageTextView.setText(weatherConditions.getHumidity());
-            //pressureTextView.setText(weatherConditions.getPressure());
+            degreeTextView.setText(weatherConditions.getTemperature() + "\u00B0");
+            percentageTextView.setText(weatherConditions.getHumidity() + "%");
+            pressureTextView.setText(weatherConditions.getPressure() + "hpa");
             weatherTextView.setText(weatherConditions.getWeather());
-            //windSpeedTextView.setText(weatherConditions.getWind());
+            windSpeedTextView.setText(weatherConditions.getWind() + "km/h");
         }
     }
 
