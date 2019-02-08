@@ -100,12 +100,16 @@ public class MainActivity extends AppCompatActivity {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
-            layoutSettings(cityEditText.getText().toString());
         }
 
-        private void layoutSettings(String string) {
-            cityTextView.setText(string);
+        private void layoutSettings() {
+            final EditText cityEditText = (EditText) findViewById(R.id.cityEditText);
+            cityTextView.setText(cityEditText.getText().toString());
+            //degreeTextView.setText(weatherConditions.getTemperature());
+            //percentageTextView.setText(weatherConditions.getHumidity());
+            //pressureTextView.setText(weatherConditions.getPressure());
+            weatherTextView.setText(weatherConditions.getWeather());
+            //windSpeedTextView.setText(weatherConditions.getWind());
         }
     }
 
@@ -192,8 +196,9 @@ public class MainActivity extends AppCompatActivity {
                 for (int i = 0; i < jsonWeatherArray.length(); i++) {
                     JSONObject jsonWeatherPart = jsonWeatherArray.getJSONObject(i);
                     weatherConditions.setWeather(jsonWeatherPart.getString("main"));
-
                 }
+
+                weatherTemplate.layoutSettings();
 
             } catch (JSONException e) {
                 e.printStackTrace();
