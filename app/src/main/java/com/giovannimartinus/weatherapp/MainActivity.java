@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -89,16 +90,22 @@ public class MainActivity extends AppCompatActivity {
 
     private class WeatherTemplate {
         private void searchFunction() {
-            weatherLayout.setVisibility(View.VISIBLE);
-            homeLayout.setVisibility(View.GONE);
             final EditText cityEditText = (EditText) findViewById(R.id.cityEditText);
-            final DownloadTask downloadTask = new DownloadTask();
 
-            try {
-                downloadTask.execute("https://api.openweathermap.org/data/2.5/weather?q=" +
-                        cityEditText.getText() + "&appid=d459a5bba54428ba7c66c626f2e5495f");
-            } catch (Exception e) {
-                e.printStackTrace();
+            if (cityEditText.getText() != null) {
+                weatherLayout.setVisibility(View.VISIBLE);
+                homeLayout.setVisibility(View.GONE);
+
+                final DownloadTask downloadTask = new DownloadTask();
+
+                try {
+                    downloadTask.execute("https://api.openweathermap.org/data/2.5/weather?q=" +
+                            cityEditText.getText() + "&appid=d459a5bba54428ba7c66c626f2e5495f");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else {
+                Toast.makeText(MainActivity.this, "Enter The Name of a City", Toast.LENGTH_SHORT).show();
             }
         }
 
