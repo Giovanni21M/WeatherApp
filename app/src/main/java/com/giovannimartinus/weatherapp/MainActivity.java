@@ -90,9 +90,11 @@ public class MainActivity extends AppCompatActivity {
 
     private class WeatherTemplate {
         private void searchFunction() {
-            final EditText cityEditText = (EditText) findViewById(R.id.cityEditText);
+            EditText cityEditText = (EditText) findViewById(R.id.cityEditText);
 
-            if (cityEditText.getText() != null) {
+            if (cityEditText.getText().toString() == null || cityEditText.getText().toString().trim().isEmpty()) {
+                Toast.makeText(MainActivity.this, "Enter The Name of a City", Toast.LENGTH_SHORT).show();
+            } else {
                 weatherLayout.setVisibility(View.VISIBLE);
                 homeLayout.setVisibility(View.GONE);
 
@@ -104,8 +106,6 @@ public class MainActivity extends AppCompatActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-            } else {
-                Toast.makeText(MainActivity.this, "Enter The Name of a City", Toast.LENGTH_SHORT).show();
             }
         }
 
