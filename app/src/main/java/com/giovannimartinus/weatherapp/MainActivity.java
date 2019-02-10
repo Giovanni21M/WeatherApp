@@ -173,6 +173,18 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
         }
+
+        private void timeOfDay() {
+            long sunrise = weatherConditions.getSunriseTimeStamp();
+            long sunset = weatherConditions.getSunsetTimestamp();
+            long current = weatherConditions.getTimeStamp();
+
+            if (current >= sunrise && current < sunset) {
+                dayTimeIcon.setImageResource(R.drawable.dayicon);
+            } else {
+                dayTimeIcon.setImageResource(R.drawable.nighticon);
+            }
+        }
     }
 
     public class DownloadTask extends AsyncTask<String, Void, String> {
@@ -279,6 +291,7 @@ public class MainActivity extends AppCompatActivity {
                 weatherConditions.setSunsetTimestamp(longSunset);
 
                 weatherTemplate.layoutSettings();
+                weatherTemplate.timeOfDay();
 
             } catch (JSONException e) {
                 e.printStackTrace();
