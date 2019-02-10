@@ -111,12 +111,40 @@ public class MainActivity extends AppCompatActivity {
 
         private void layoutSettings() {
             final EditText cityEditText = (EditText) findViewById(R.id.cityEditText);
+
             cityTextView.setText(cityEditText.getText().toString());
             degreeTextView.setText(weatherConditions.getTemperature() + "\u00B0");
             percentageTextView.setText(weatherConditions.getHumidity() + "%");
             pressureTextView.setText(weatherConditions.getPressure() + "hpa");
             weatherTextView.setText(weatherConditions.getWeather());
             windSpeedTextView.setText(weatherConditions.getWind() + "km/h");
+
+            switch (weatherConditions.getWeather().toLowerCase()) {
+                case "thunderstorm":
+                    weatherBackgroundView.setImageResource(R.drawable.thunderstormbg);
+                    break;
+                case "drizzle":
+                    weatherBackgroundView.setImageResource(R.drawable.rainbg);
+                    break;
+                case "rain":
+                    weatherBackgroundView.setImageResource(R.drawable.rainbg);
+                    break;
+                case "snow":
+                    weatherBackgroundView.setImageResource(R.drawable.snowbg);
+                    break;
+                case "clear":
+                    weatherBackgroundView.setImageResource(R.drawable.sunnybg);
+                    break;
+                case "clouds":
+                    weatherBackgroundView.setImageResource(R.drawable.cloudybg);
+                    break;
+                case "mist":
+                    weatherBackgroundView.setImageResource(R.drawable.mistbg);
+                    break;
+                case "volcanic ash":
+                    weatherBackgroundView.setImageResource(R.drawable.volcanicashbg);
+                    break;
+            }
         }
     }
 
