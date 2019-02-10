@@ -40,11 +40,16 @@ public class MainActivity extends AppCompatActivity {
     final WeatherTemplate weatherTemplate = new WeatherTemplate();
 
     private class WeatherConditions {
+        private long timeStamp;
         private String temperature;
         private String pressure;
         private String humidity;
         private String wind;
         private String weather;
+
+        public long getTimeStamp() {
+            return timeStamp;
+        }
 
         public String getTemperature() {
             return temperature;
@@ -69,6 +74,10 @@ public class MainActivity extends AppCompatActivity {
         public void setTemperature(int temperature) {
             // need to convert from Kelvin to Celsius
             this.temperature = String.valueOf(temperature - 273);
+        }
+
+        public void setTimeStamp(long timeStamp) {
+            this.timeStamp = timeStamp;
         }
 
         public void setPressure(int pressure) {
@@ -232,6 +241,10 @@ public class MainActivity extends AppCompatActivity {
                     JSONObject jsonWeatherPart = jsonWeatherArray.getJSONObject(i);
                     weatherConditions.setWeather(jsonWeatherPart.getString("main"));
                 }
+
+                String timeStamp = jsonObject.getString("dt");
+                Long longTimeStamp = Long.parseLong(timeStamp);
+                weatherConditions.setTimeStamp(longTimeStamp);
 
                 weatherTemplate.layoutSettings();
 
