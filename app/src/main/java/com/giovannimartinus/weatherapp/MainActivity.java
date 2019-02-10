@@ -41,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
 
     private class WeatherConditions {
         private long timeStamp;
+        private long sunriseTimeStamp;
+        private long sunsetTimestamp;
         private String temperature;
         private String pressure;
         private String humidity;
@@ -49,6 +51,14 @@ public class MainActivity extends AppCompatActivity {
 
         public long getTimeStamp() {
             return timeStamp;
+        }
+
+        public long getSunriseTimeStamp() {
+            return sunriseTimeStamp;
+        }
+
+        public long getSunsetTimestamp() {
+            return sunsetTimestamp;
         }
 
         public String getTemperature() {
@@ -78,6 +88,14 @@ public class MainActivity extends AppCompatActivity {
 
         public void setTimeStamp(long timeStamp) {
             this.timeStamp = timeStamp;
+        }
+
+        public void setSunriseTimeStamp(long sunriseTimeStamp) {
+            this.sunriseTimeStamp = sunriseTimeStamp;
+        }
+
+        public void setSunsetTimestamp(long sunsetTimestamp) {
+            this.sunsetTimestamp = sunsetTimestamp;
         }
 
         public void setPressure(int pressure) {
@@ -242,9 +260,23 @@ public class MainActivity extends AppCompatActivity {
                     weatherConditions.setWeather(jsonWeatherPart.getString("main"));
                 }
 
+                // get current timestamp and pass to weatherconditions
                 String timeStamp = jsonObject.getString("dt");
-                Long longTimeStamp = Long.parseLong(timeStamp);
+                long longTimeStamp = Long.parseLong(timeStamp);
                 weatherConditions.setTimeStamp(longTimeStamp);
+
+
+                JSONObject sysInfo = jsonObject.getJSONObject("sys");
+
+                // get sunrise timestamp and pass to weatherconditions
+                String sunriseTimeStamp = sysInfo.getString("sunrise");
+                long longSunrise = Long.parseLong(sunriseTimeStamp);
+                weatherConditions.setSunriseTimeStamp(longSunrise);
+
+                // get sunset timestamp and pass to weatherconditions
+                String sunsetTimeStamp = sysInfo.getString("sunset");
+                long longSunset = Long.parseLong(sunsetTimeStamp);
+                weatherConditions.setSunsetTimestamp(longSunset);
 
                 weatherTemplate.layoutSettings();
 
