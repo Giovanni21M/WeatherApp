@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     final WeatherConditions weatherConditions = new WeatherConditions();
     final WeatherTemplate weatherTemplate = new WeatherTemplate();
 
+    // encapsulation class
     private class WeatherConditions {
         private long timeStamp;
         private long sunriseTimeStamp;
@@ -119,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
         private void searchFunction() {
             EditText cityEditText = (EditText) findViewById(R.id.cityEditText);
 
+            // ensure search is not empty
             if (cityEditText.getText().toString() == null || cityEditText.getText().toString().trim().isEmpty()) {
                 Toast.makeText(MainActivity.this, "Enter The Name of a City", Toast.LENGTH_SHORT).show();
             } else {
@@ -139,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
         private void layoutSettings() {
             final EditText cityEditText = (EditText) findViewById(R.id.cityEditText);
 
+            // set text views of city and current weather/climate conditions
             cityTextView.setText(cityEditText.getText().toString());
             degreeTextView.setText(weatherConditions.getTemperature() + "\u00B0");
             percentageTextView.setText(weatherConditions.getHumidity() + "%");
@@ -146,6 +149,8 @@ public class MainActivity extends AppCompatActivity {
             weatherTextView.setText(weatherConditions.getWeather());
             windSpeedTextView.setText(weatherConditions.getWind() + "km/h");
 
+
+            // set background - based on current weather
             switch (weatherConditions.getWeather().toLowerCase()) {
                 case "thunderstorm":
                     weatherBackgroundView.setImageResource(R.drawable.thunderstormbg);
@@ -174,6 +179,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+        // set day/night icon - based on current time
         private void timeOfDay() {
             long sunrise = weatherConditions.getSunriseTimeStamp();
             long sunset = weatherConditions.getSunsetTimestamp();
@@ -302,6 +308,8 @@ public class MainActivity extends AppCompatActivity {
     public void returnButton(View view) {
         weatherLayout.setVisibility(View.GONE);
         homeLayout.setVisibility(View.VISIBLE);
+
+        weatherBackgroundView.setImageResource(R.drawable.homepagebg);
     }
 
     public void searchButton(View view) {
