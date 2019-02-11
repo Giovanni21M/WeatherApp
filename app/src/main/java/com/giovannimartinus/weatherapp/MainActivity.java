@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView homeBackgroundView;
     ImageView weatherBackgroundView;
     TextView cityTextView;
-    TextView degreeTextView;
+    TextView degreeButton;
     TextView percentageTextView;
     TextView pressureTextView;
     TextView weatherTextView;
@@ -117,6 +117,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private class WeatherTemplate {
+        boolean celsius = true;
+
         private void searchFunction() {
             EditText cityEditText = (EditText) findViewById(R.id.cityEditText);
 
@@ -143,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
 
             // set text views of city and current weather/climate conditions
             cityTextView.setText(cityEditText.getText().toString());
-            degreeTextView.setText(weatherConditions.getTemperature() + "\u00B0");
+            degreeButton.setText(weatherConditions.getTemperature() + "\u00B0");
             percentageTextView.setText(weatherConditions.getHumidity() + "%");
             pressureTextView.setText(weatherConditions.getPressure() + "hpa");
             weatherTextView.setText(weatherConditions.getWeather());
@@ -190,6 +192,30 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 dayTimeIcon.setImageResource(R.drawable.nighticon);
             }
+        }
+
+        // convert from celsius to fahrenheit or vice versa
+        private void degreeConversion() {
+            if (celsius == true) {
+                celsius = false;
+
+                int c = Integer.parseInt(weatherConditions.getTemperature());
+                Double f = c * 1.8 + 32;
+                int fahrenheit = f.intValue();
+
+                degreeButton.setText(fahrenheit + "\u00B0");
+            } else if (celsius == false) {
+                celsius = true;
+                degreeButton.setText(weatherConditions.getTemperature() + "\u00B0");
+            }
+        }
+
+        private void returnFunction() {
+            celsius = true;
+            weatherLayout.setVisibility(View.GONE);
+            homeLayout.setVisibility(View.VISIBLE);
+
+            weatherBackgroundView.setImageResource(R.drawable.homepagebg);
         }
     }
 
@@ -305,11 +331,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void returnButton(View view) {
-        weatherLayout.setVisibility(View.GONE);
-        homeLayout.setVisibility(View.VISIBLE);
+    public void degreeButton(View view) {
+        weatherTemplate.degreeConversion();
+    }
 
-        weatherBackgroundView.setImageResource(R.drawable.homepagebg);
+    public void returnButton(View view) {
+        weatherTemplate.returnFunction();
     }
 
     public void searchButton(View view) {
@@ -325,7 +352,7 @@ public class MainActivity extends AppCompatActivity {
         homeBackgroundView = (ImageView) findViewById(R.id.homeBackgroundView);
         weatherBackgroundView = (ImageView) findViewById(R.id.weatherBackgroundView);
         cityTextView = (TextView) findViewById(R.id.cityTextView);
-        degreeTextView = (TextView) findViewById(R.id.degreeTextView);
+        degreeButton = (TextView) findViewById(R.id.degreeButton);
         percentageTextView = (TextView) findViewById(R.id.percentageTextView);
         pressureTextView = (TextView) findViewById(R.id.pressureTextView);
         weatherTextView = (TextView) findViewById(R.id.weatherTextView);
