@@ -21,6 +21,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -132,8 +133,11 @@ public class MainActivity extends AppCompatActivity {
                 final DownloadTask downloadTask = new DownloadTask();
 
                 try {
+                    // encode string to url and call downloadTask
+                    String encodedCityName = URLEncoder.encode(cityEditText.getText().toString(), "UTF-8");
+
                     downloadTask.execute("https://api.openweathermap.org/data/2.5/weather?q=" +
-                            cityEditText.getText() + "&appid=d459a5bba54428ba7c66c626f2e5495f");
+                            encodedCityName + "&appid=d459a5bba54428ba7c66c626f2e5495f");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
