@@ -211,14 +211,16 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true">
 
-            <TextView
+            <Button
                 android:text="00\u00B0"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/degreeTextView"
+                android:id="@+id/degreeButton"
+                android:background="?attr/selectableItemBackground"
                 android:textSize="64sp"
                 android:textColor="@android:color/white"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:onClick="degreeButton" />
 
             <TextView
                 android:text="sunny"
